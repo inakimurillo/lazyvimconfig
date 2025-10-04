@@ -14,14 +14,13 @@ rm nvim-linux-x86_64.tar.gz
 echo "Add path to .bashrc"
 echo 'export PATH="$PATH:/opt/nvim-linux-x86_64/bin/"' >>~/.bashrc
 
-# Create config directory in case it does not exits
-mkdir -p ~/.config/
-
 configpath="~/.config/nvim/"
 if [ -d "$configpath" ]; then
   new="$configpath-$(date +%Y-%m-%d)"
   [ -e "$new" ] && new="${new}_$(date +%H%M%S)"
   mv "$configpath" "$new"
+else
+  mkdir -p $configpath
 fi
 
 echo "Copy repo config"
