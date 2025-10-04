@@ -12,7 +12,7 @@ echo "Clean downloaded file"
 rm nvim-linux-x86_64.tar.gz
 
 echo "Add path to .bashrc"
-echo 'export PATH="$PATH;/opt/nvim-linux-x86_64/bin/"' >>.bashrc
+echo 'export PATH="$PATH:/opt/nvim-linux-x86_64/bin/"' >>~/.bashrc
 
 echo "Install LazyVim"
 git clone https://github.com/LazyVim/starter ~/.config/nvim
