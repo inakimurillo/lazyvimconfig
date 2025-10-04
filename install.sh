@@ -14,6 +14,14 @@ rm nvim-linux-x86_64.tar.gz
 echo "Add path to .bashrc"
 echo 'export PATH="$PATH:/opt/nvim-linux-x86_64/bin/"' >>~/.bashrc
 
-echo "Install LazyVim"
-git clone https://github.com/LazyVim/starter ~/.config/nvim
-rm -rf ~/.config/nvim/.git
+configpath="~/.config/nvim/"
+if [ -d "$configpath" ]; then
+  new="$configpath-$(date +%Y-%m-%d)"
+  [ -e "$new" ] && new="${new}_$(date +%H%M%S)"
+  mv "$configpath" "$new"
+fi
+
+echo "Copy repo config"
+cp -r nvim/* $configpath
+
+echo "Done"
